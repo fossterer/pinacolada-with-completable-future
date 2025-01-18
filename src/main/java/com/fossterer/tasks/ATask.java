@@ -19,7 +19,7 @@ public abstract class ATask implements Runnable
 	@Override
 	public void run()
 	{
-		logger.info("Starting task [{} ms]", Long.toString(System.currentTimeMillis()));
+		logger.info("Starting task [{} ms]: {}", Long.toString(System.currentTimeMillis()), getClass().getCanonicalName());
 		try
 		{
 			Thread.sleep(((long) getProcessingTimeInSeconds()) * 1000);
@@ -28,7 +28,7 @@ public abstract class ATask implements Runnable
 		{
 			e.printStackTrace();
 		}
-		logger.debug("Ending task [{} ms]", Long.toString(System.currentTimeMillis()));
+		logger.debug("Ending task [{} ms]: {}", Long.toString(System.currentTimeMillis()), getClass().getCanonicalName());
 	}
 
 	protected abstract long getProcessingTimeInSeconds();
